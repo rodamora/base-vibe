@@ -9,13 +9,21 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ai-sdk/anthropic": "^2.0.15",
+    "@ai-sdk/google": "^2.0.13",
+    "@ai-sdk/openai": "^2.0.28",
+    "ai": "^5.0.39",
     "chart.js": "^4.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "dexie": "^4.2.0",
     "lucide-react": "^0.543.0",
+    "nanoid": "^5.1.5",
     "next": "15.5.2",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
     "rxdb": "^16.19.0",
     "rxjs": "^7.8.2",
     "tailwind-merge": "^3.3.1"

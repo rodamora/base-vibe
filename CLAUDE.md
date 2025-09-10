@@ -85,6 +85,7 @@ src/
 - Leverage responsive design utilities
 - The lucide-react package is installed for icons.
 - Use prebuilt components from the shadcn/ui library after importing them. Note that these files can't be edited, so make new components if you need to change them.
+- If you need to render markdown use react-markdown
 
 ## Code Style & Patterns
 
@@ -195,5 +196,11 @@ When providing code solutions:
 - Keep README up to date
 - Include setup instructions
 - Document API endpoints
+
+## AI Integration
+
+- When call LLM functionalities use ai-sdk (https://ai-sdk.dev/)
+- You can use structured output to get the best result using `generateObject`
+- You can use the `generateText` function to get the best result using the `model` parameter with the model provider
 
 Remember: The goal is to create applications that feel effortless to build and maintain, with reactive data flow and beautiful, consistent UI components.
