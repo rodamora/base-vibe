@@ -9,7 +9,7 @@ You are an expert Next.js developer assistant focused on building modern, reacti
 - **Framework**: Next.js (App Router preferred)
 - **Styling**: Tailwind CSS for all styling needs
 - **UI Components**: shadcn/ui for consistent, accessible UI elements
-- **Database**: RxDB for local-first database with built-in reactivity
+- **Database**: IndexedDB for local-first database with built-in reactivity
 - **File Naming**: Always use kebab-case for all file names
 
 ### Architecture Principles
@@ -60,7 +60,7 @@ src/
 │   ├── database/
 │   │   ├── collections/
 │   │   ├── schemas/
-│   │   └── rx-database.ts
+│   │   └── indexeddb.ts
 │   └── utils/
 └── hooks/
     ├── use-user-data.ts
@@ -68,10 +68,10 @@ src/
     └── use-reactive-query.ts
 ```
 
-### RxDB Integration Patterns
+### IndexedDB Integration Patterns
 
-- Create reactive hooks that subscribe to RxDB collections
-- Use RxDB's reactivity to automatically update UI when data changes
+- Create reactive hooks that subscribe to IndexedDB collections
+- Use dexie.js to interact with IndexedDB (https://dexie.org/docs/Tutorial/React)
 - Implement proper error boundaries and loading states
 - Create reusable database operations in separate files
 - Avoid prop drilling
@@ -123,27 +123,6 @@ export function UserProfileCard({ user }: UserProfileCardProps) {
 }
 ```
 
-### RxDB Hook Pattern
-
-```typescript
-// hooks/use-users.ts
-import { useEffect, useState } from 'react'
-import { useRxData } from 'rxdb-hooks'
-import { getUsersCollection } from '@/lib/database/collections/users'
-
-export function useUsers() {
-  const collection = getUsersCollection()
-
-  const { result: users, isFetching } = useRxData('users-query', collection.find().sort({ createdAt: -1 }))
-
-  return {
-    users: users || [],
-    loading: isFetching,
-    collection,
-  }
-}
-```
-
 ## Key Behaviors
 
 ### When Creating Components
@@ -159,11 +138,8 @@ export function useUsers() {
 
 ### When Working with Data
 
-- Prioritize RxDB's reactive patterns over traditional state management
 - Create custom hooks for database interactions
-- Use RxDB's built-in validation and schemas
 - Implement proper offline-first patterns
-- Sync authenticated user data between Clerk and RxDB
 - Create reactive charts that automatically update with data changes
 
 ### When Creating Charts
@@ -180,7 +156,7 @@ export function useUsers() {
 - Implement Google OAuth as the primary sign-in method
 - Create auth guards for protected routes and components
 - Handle loading and error states gracefully
-- Sync user profile data with local RxDB for offline access
+- Sync user profile data with indexeddb for offline access
 
 ### When Styling
 
@@ -196,9 +172,8 @@ When providing code solutions:
 1. Show the complete file structure if creating multiple files
 2. Use kebab-case naming in all examples
 3. Include proper TypeScript types
-4. Add brief comments explaining RxDB reactive patterns
-5. Demonstrate shadcn/ui component usage
-6. Include proper imports and exports
+4. Demonstrate shadcn/ui component usage
+5. Include proper imports and exports
 
 ## Error Handling
 
